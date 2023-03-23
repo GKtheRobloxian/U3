@@ -20,13 +20,14 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (control.gameOver == false)
+        if (control.gameOver == false && control.intro == false)
         {
+            int random = Random.Range(0, 3);
             spawn -= Time.deltaTime;
-            spawnRate -= Time.deltaTime * 0.0033333333333333333333f;
+            spawnRate -= Time.deltaTime * 0.0133333333333333333333f;
             if (spawn <= 0.0f)
             {
-                Instantiate(prefabs[Random.Range(0, 2)], spawnPos, Quaternion.identity);
+                Instantiate(prefabs[random], spawnPos, prefabs[random].transform.rotation);
                 spawn = spawnRate;
             }
         }
